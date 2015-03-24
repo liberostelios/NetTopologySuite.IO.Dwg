@@ -63,12 +63,6 @@
       <HintPath>..\Inc\AcMPolygonMGD.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="GeoAPI">
-      <HintPath>..\..\..\..\..\..\SharpMap\Tags\v1.1\SharpMap.Data.Providers.OracleSpatial\bin\Debug\GeoAPI.dll</HintPath>
-    </Reference>
-    <Reference Include="NetTopologySuite">
-      <HintPath>..\..\..\..\..\..\SharpMap\Tags\v1.1\SharpMap.Data.Providers.OracleSpatial\bin\Debug\NetTopologySuite.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
