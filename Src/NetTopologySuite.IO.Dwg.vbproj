@@ -8,7 +8,7 @@
     <ProjectGuid>{EAAD5774-D7C0-4816-9B5E-72CEB84FC41D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>NetTopologySuite.IO.Dwg</RootNamespace>
-    <AssemblyName>DwgReader</AssemblyName>
+    <AssemblyName>NetTopologySuite.IO.Dwg</AssemblyName>
     <MyType>Windows</MyType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileUpgradeFlags>
@@ -38,8 +38,8 @@
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>DwgReader.xml</DocumentationFile>
+    <OutputPath>..\Bin\Debug\</OutputPath>
+    <DocumentationFile>NetTopologySuite.IO.Dwg.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -48,7 +48,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>..\Bin\</OutputPath>
-    <DocumentationFile>DwgReader.xml</DocumentationFile>
+    <DocumentationFile>NetTopologySuite.IO.Dwg.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
   </PropertyGroup>
   <ItemGroup>
@@ -62,6 +62,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Inc\AcMPolygonMGD.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="GeoAPI">
+      <HintPath>packages\GeoAPI.1.7.3.1\lib\net40-client\GeoAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="NetTopologySuite">
+      <HintPath>packages\NetTopologySuite.1.13.3.2\lib\net40-client\NetTopologySuite.dll</HintPath>
+    </Reference>
+    <Reference Include="PowerCollections">
+      <HintPath>packages\NetTopologySuite.1.13.3.2\lib\net40-client\PowerCollections.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -94,6 +103,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

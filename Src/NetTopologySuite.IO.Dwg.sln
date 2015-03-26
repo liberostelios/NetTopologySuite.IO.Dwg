@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "NetTopologySuite.IO.Dwg", "NetTopologySuite.IO.Dwg.vbproj", "{EAAD5774-D7C0-4816-9B5E-72CEB84FC41D}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "DwgDemo", "DwgDemo\DwgDemo.vbproj", "{48F7260D-6FA3-4F38-8E0E-30252D816BD7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EAAD5774-D7C0-4816-9B5E-72CEB84FC41D} = {EAAD5774-D7C0-4816-9B5E-72CEB84FC41D}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAAD5774-D7C0-4816-9B5E-72CEB84FC41D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAAD5774-D7C0-4816-9B5E-72CEB84FC41D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAAD5774-D7C0-4816-9B5E-72CEB84FC41D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAAD5774-D7C0-4816-9B5E-72CEB84FC41D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48F7260D-6FA3-4F38-8E0E-30252D816BD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48F7260D-6FA3-4F38-8E0E-30252D816BD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48F7260D-6FA3-4F38-8E0E-30252D816BD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48F7260D-6FA3-4F38-8E0E-30252D816BD7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
