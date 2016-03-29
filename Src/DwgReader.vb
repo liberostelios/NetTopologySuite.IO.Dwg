@@ -390,47 +390,6 @@ Public Class DwgReader
 
 #End Region
 
-#Region " ReadMultiPolygon "
-
-    ''' <summary>
-    ''' Returns <see cref="MultiPolygon"/> geometry converted from <see cref="MPolygon"/> entity.
-    ''' </summary>
-    ''' <param name="multiPolygon">A <see cref="MPolygon"/> entity.</param>
-    ''' <returns>A <see cref="MultiPolygon"/> geometry.</returns>
-    ''' <remarks>
-    ''' If <see cref="MPolygon"/> entity contains arc segments (bulges), such segments will 
-    ''' get tessellated using settings defined via <see cref="CurveTessellationMethod"/>.
-    ''' </remarks>
-    Public Function ReadMultiPolygon(ByVal multiPolygon As MPolygon) As IMultiPolygon
-        Dim polygons As New List(Of IPolygon)
-
-        For i As Integer = 0 To multiPolygon.NumMPolygonLoops - 1
-            If multiPolygon.GetLoopDirection(i) = LoopDirection.Exterior Then
-                Dim shell As ILinearRing = _
-                    Me.GeometryFactory.CreateLinearRing( _
-                    Me.GetMPolygonLoopCoordinates( _
-                    multiPolygon, _
-                    multiPolygon.GetMPolygonLoopAt(i)))
-
-                Dim holes As New List(Of ILinearRing)
-                For Each j As Integer In multiPolygon.GetChildLoops(i)
-                    If multiPolygon.GetLoopDirection(j) = LoopDirection.Interior Then
-                        holes.Add( _
-                            Me.GeometryFactory.CreateLinearRing( _
-                            Me.GetMPolygonLoopCoordinates( _
-                            multiPolygon, _
-                            multiPolygon.GetMPolygonLoopAt(j))))
-                    End If
-                Next
-                polygons.Add(Me.GeometryFactory.CreatePolygon(shell, holes.ToArray))
-            End If
-        Next
-
-        Return Me.GeometryFactory.CreateMultiPolygon(polygons.ToArray)
-    End Function
-
-#End Region
-
 #Region " ReadGeometry "
 
     ''' <summary>
@@ -503,8 +462,6 @@ Public Class DwgReader
                 Return Me.ReadLineString(CType(entity, Arc))
             Case "AcDbMline"
                 Return Me.ReadLineString(CType(entity, Mline))
-            Case "AcDbMPolygon"
-                Return Me.ReadMultiPolygon(CType(entity, MPolygon))
             Case Else
                 Throw New ArgumentException(String.Format("Conversion from {0} entity to IGeometry is not supported.", entity.GetRXClass.Name))
                 Return Nothing
@@ -634,38 +591,6 @@ Public Class DwgReader
         End Try
 
         Return Me.GetTessellatedCurveCoordinates(circularArc)
-    End Function
-
-#End Region
-
-#Region " GetMPolygonLoopCoordinates "
-
-    Private Function GetMPolygonLoopCoordinates(ByVal multiPolygon As MPolygon, ByVal multiPolygonLoop As MPolygonLoop) As ICoordinate()
-        Dim points As New List(Of Coordinate)
-
-        For i As Integer = 0 To multiPolygonLoop.Count - 1
-            Dim vert As BulgeVertex = multiPolygonLoop.Item(i)
-            If vert.Bulge = 0 Then
-                points.Add(Me.ReadCoordinate(vert.Vertex))
-            Else
-                Dim endPoint As Point2d
-                If i + 1 <= multiPolygonLoop.Count - 1 Then
-                    endPoint = multiPolygonLoop.Item(i + 1).Vertex
-                Else
-                    endPoint = multiPolygonLoop.Item(0).Vertex
-                End If
-
-                For Each point As Coordinate In Me.GetTessellatedCurveCoordinates(multiPolygon.Ecs, vert.Vertex, endPoint, vert.Bulge)
-                    points.Add(point)
-                Next
-            End If
-        Next
-
-        If Not points(0).Equals2D(points(points.Count - 1)) Then
-            points.Add(points(0))
-        End If
-
-        Return points.ToArray()
     End Function
 
 #End Region

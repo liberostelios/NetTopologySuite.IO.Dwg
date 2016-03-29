@@ -10,7 +10,7 @@
     <RootNamespace>NetTopologySuite.IO.Dwg</RootNamespace>
     <AssemblyName>NetTopologySuite.IO.Dwg</AssemblyName>
     <MyType>Windows</MyType>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -41,6 +41,7 @@
     <OutputPath>..\Bin\Debug\</OutputPath>
     <DocumentationFile>NetTopologySuite.IO.Dwg.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -50,27 +51,28 @@
     <OutputPath>..\Bin\</OutputPath>
     <DocumentationFile>NetTopologySuite.IO.Dwg.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="acdbmgd">
       <HintPath>C:\Program Files\Autodesk\AutoCAD Map 3D 2012\acdbmgd.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="acmgd">
       <HintPath>C:\Program Files\Autodesk\AutoCAD Map 3D 2012\acmgd.dll</HintPath>
-    </Reference>
-    <Reference Include="AcMPolygonMGD, Version=1.0.2242.14829, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Inc\AcMPolygonMGD.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="GeoAPI">
-      <HintPath>packages\GeoAPI.1.7.3.1\lib\net40-client\GeoAPI.dll</HintPath>
+    <Reference Include="GeoAPI, Version=1.7.4.0, Culture=neutral, PublicKeyToken=a1a0da7def465678, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\GeoAPI.1.7.4\lib\net40-client\GeoAPI.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="NetTopologySuite">
-      <HintPath>packages\NetTopologySuite.1.13.3.2\lib\net40-client\NetTopologySuite.dll</HintPath>
+    <Reference Include="NetTopologySuite, Version=1.14.0.0, Culture=neutral, PublicKeyToken=f580a05016ebada1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\NetTopologySuite\Debug\v4.0\AnyCPU\NetTopologySuite.dll</HintPath>
     </Reference>
-    <Reference Include="PowerCollections">
-      <HintPath>packages\NetTopologySuite.1.13.3.2\lib\net40-client\PowerCollections.dll</HintPath>
+    <Reference Include="PowerCollections, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2573bf8a1bdddcd5, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NetTopologySuite.1.14\lib\net40-client\PowerCollections.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
